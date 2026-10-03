@@ -15,7 +15,7 @@ export default function useReg() {
     const init = async () => {
       if (!window.scr) {
         const script = document.createElement('script');
-        script.src = '/eggs/scramjet.all.js';
+        script.src = 'https://cdn.jsdelivr.net/npm/@mercuryworkshop/scramjet@1.1.0/dist/scramjet.all.js';
         await new Promise((resolve, reject) => {
           script.onload = resolve;
           script.onerror = reject;
@@ -26,7 +26,7 @@ export default function useReg() {
       const { ScramjetController } = $scramjetLoadController();
 
       const hamPrefix = '/ham/';
-      const eggsPath = '/eggs/';
+      const eggsPath = 'https://cdn.jsdelivr.net/npm/@mercuryworkshop/scramjet@1.1.0/dist/';
 
       window.scr = new ScramjetController({
         prefix: hamPrefix,
@@ -52,10 +52,10 @@ export default function useReg() {
         }
       }
 
-      const baremuxPath = new URL('/baremux/worker.js', location.origin).href;
+      const baremuxPath = 'https://cdn.jsdelivr.net/npm/@mercuryworkshop/bare-mux@2.1.9/dist/worker.js';
       const connection = new BareMuxConnection(baremuxPath);
 
-      const libcurlPath = '/libcurl/index.mjs';
+      const libcurlPath = 'https://cdn.jsdelivr.net/npm/@mercuryworkshop/libcurl-transport@1.5.1/dist/index.mjs';
       const wisp = options.wServer || defaultWs;
       await connection.setTransport(libcurlPath, [
         {
